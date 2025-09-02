@@ -1,6 +1,6 @@
 const Event = require("../models/Event");
 
-// Yeni event oluştur
+
 exports.createEvent = async (req,res)=>{
     try{
         const {title,description,date,location,participants,status} = req.body;
@@ -25,7 +25,7 @@ exports.createEvent = async (req,res)=>{
     }
 };
 
-// Kullanıcının kendi eventlerini getir
+
 exports.getMyEvents = async(req,res)=>{
     try{
         const events = await Event.find({createdBy: req.user.id});
@@ -39,7 +39,7 @@ exports.getMyEvents = async(req,res)=>{
     }
 };
 
-// Tüm eventleri getir
+
 exports.getAllEvents = async(req,res)=>{
     try{
         const events = await Event.find();
@@ -53,7 +53,7 @@ exports.getAllEvents = async(req,res)=>{
     }
 };
 
-// ID ile event getir
+
 exports.getEventById = async(req,res)=>{
     try{
         const event = await Event.findById(req.params.id);
@@ -68,7 +68,7 @@ exports.getEventById = async(req,res)=>{
     }
 };
 
-// Event güncelle
+
 exports.updateEvent = async(req,res)=>{
     try{
         const {title,description,date,location,participants,status} = req.body;
@@ -93,7 +93,7 @@ exports.updateEvent = async(req,res)=>{
     }
 };
 
-// Event sil
+
 exports.deleteEvent = async(req,res)=>{
     try{
         const event = await Event.findByIdAndDelete(req.params.id);
@@ -105,7 +105,7 @@ exports.deleteEvent = async(req,res)=>{
     }
 };
 
-// Event’e katıl
+
 exports.joinEvent = async(req,res)=>{
     try{
         const event = await Event.findById(req.params.id);
@@ -125,7 +125,7 @@ exports.joinEvent = async(req,res)=>{
     }
 };
 
-// Event’ten ayrıl
+
 exports.leaveEvent = async(req,res)=>{
     try{
         const event = await Event.findById(req.params.id);
